@@ -73,6 +73,12 @@ export class RichText extends React.Component<IChartProps> {
             fieldBoundaries={RichText.FieldBoundaries}
             mapFields={mapFields}
             data={data}
+            onSelectChartsItems={this.props.onSelectChartsItems}
+            selectedItems={this.props.selectedItems}
+            onCheckTableInteract={this.props.onCheckTableInteract}
+            onDoInteract={this.props.onDoInteract}
+            getDataDrillDetail={this.props.getDataDrillDetail}
+            selectedChart={this.props.selectedChart}
           /> :
           <Editor
             content={content}

@@ -27,9 +27,66 @@ interface IRichTextPreviewProps {
   data: any[]
   fieldBoundaries: [string, string]
   mapFields: object
+  onCheckTableInteract?: () => boolean
+  onDoInteract?: (triggerData: any) => void
+  getDataDrillDetail?: (position: string) => void
+  selectedChart: number
+  selectedItems?: number[]
+  onSelectChartsItems?: (selectedItems: number[]) => void
 }
 
 export class RichTextPreview extends React.PureComponent<IRichTextPreviewProps> {
+
+  public clickQl = () => {
+    const {data} = this.props
+    this.collectSelectedItems(data)
+  }
+  public collectSelectedItems = (params) => {
+    const { data, onSelectChartsItems, selectedChart, onDoInteract, onCheckTableInteract } = this.props
+    let selectedItems = []
+    if (this.props.selectedItems && this.props.selectedItems.length) {
+      selectedItems = [...this.props.selectedItems]
+    }
+    const { getDataDrillDetail } = this.props
+    let dataIndex = params.dataIndex
+    if (selectedChart === 4) {
+      dataIndex = params.seriesIndex
+    }
+    if (selectedItems.length === 0) {
+      selectedItems.push(dataIndex)
+    } else {
+      const isb = selectedItems.some((item) => item === dataIndex)
+      if (isb) {
+        for (let index = 0, l = selectedItems.length; index < l; index++) {
+          if (selectedItems[index] === dataIndex) {
+            selectedItems.splice(index, 1)
+            break
+          }
+        }
+      } else {
+        selectedItems.push(dataIndex)
+      }
+    }
+
+    const resultData = selectedItems.map((item) => {
+      return data[item]
+    })
+    const brushed = [{0: Object.values(resultData)}]
+    const sourceData = Object.values(resultData)
+    const isInteractiveChart = onCheckTableInteract && onCheckTableInteract()
+    if (isInteractiveChart && onDoInteract) {
+      const triggerData = sourceData
+      onDoInteract(triggerData)
+    }
+    setTimeout(() => {
+      if (getDataDrillDetail) {
+        getDataDrillDetail(JSON.stringify({range: null, brushed, sourceData}))
+      }
+    }, 500)
+    if (onSelectChartsItems) {
+      onSelectChartsItems(selectedItems)
+    }
+  }
 
   private renderFormattedText = () => {
     const { content, data, fieldBoundaries, mapFields } = this.props
@@ -52,6 +109,7 @@ export class RichTextPreview extends React.PureComponent<IRichTextPreviewProps> 
     return (
       <div className={Styles.content}>
         <div
+          onClick={this.clickQl}
           className="ql-editor"
           dangerouslySetInnerHTML={{__html: this.renderFormattedText()}}
         />
