@@ -24,7 +24,6 @@ function init (options) {
             data
         })
         if (typeof callback === 'function') {
-            console.log(callback)
             callback(data, MOUNT_NODE)
         }
         store.dispatch({
@@ -199,6 +198,15 @@ function getWidgetDetailById (widgetId: number) {
     })
 }
 
+function getRoleByOrgIdAndUserId (orgId: number, userId: number) {
+    return request({
+        method: 'get',
+        url: `${api.roles}/getRole`
+    }).then((role) => {
+        return Promise.resolve(role)
+    })
+}
+
 function getData (options) {
     const {projectId, widgetId} = options
     const getWidgets = getWidgetByProjectId(projectId)
@@ -269,6 +277,10 @@ function getData (options) {
           requestParamsFilters = requestParamsFilters.concat(item.config.sqlModel)
         })
 
+        if (options.filters && options.filters.length) {
+            requestParamsFilters = requestParamsFilters.concat(options.filters)
+        }
+
         const requestParams = {
             groups,
             aggregators,
@@ -313,6 +325,7 @@ export const sdk = {
     getWidgetByProjectId,
     getViewByProjectId,
     getWidgetDetailById,
-    getData
+    getData,
+    getRoleByOrgIdAndUserId
 }
 

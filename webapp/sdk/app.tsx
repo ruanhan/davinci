@@ -90,39 +90,39 @@ import {sdk} from './api'
 //     console.log(sourceData)
 // })
 
-const div = document.createElement('div')
-div.id = 'app1'
-div.style.width = '300px'
-div.style.height = '200px'
+// const div = document.createElement('div')
+// div.id = 'app1'
+// div.style.width = '300px'
+// div.style.height = '200px'
 
-document.body.appendChild(div)
+// document.body.appendChild(div)
 
-sdk.login({
-    username: 'rh',
-    password: '123456'
-}).then((data) => {
+// sdk.login({
+//     username: 'rh',
+//     password: '123456'
+// }).then((data) => {
    // sdk.getOrganizations().then((data) => console.log(data))
    // sdk.getWidgetByProjectId(5).then((data) => console.log(data))
    // sdk.getData({projectId: 5, widgetId: 8})
     // sdk.init('app')
     // sdk.init('app1')
    
-      sdk.init({
-        tagName: 'app1',
-        projectId: 43,
-        widgetId: 142,
-        callback: (datasource, div) => {
-          console.log(datasource, div)
-        }
-      })
-})
+//       sdk.init({
+//         tagName: 'app1',
+//         projectId: 43,
+//         widgetId: 142,
+//         callback: (datasource, div) => {
+//           console.log(datasource, div)
+//         }
+//       })
+// })
 
 
-sdk.on('click', 'app1', ({data,  sourceData}) => {
-    console.log('app')
-    console.log(data)
-    console.log(sourceData)
-})
+// sdk.on('click', 'app1', ({data,  sourceData}) => {
+//     console.log('app')
+//     console.log(data)
+//     console.log(sourceData)
+// })
 
 
 
