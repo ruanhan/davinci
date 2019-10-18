@@ -15,7 +15,7 @@ function init (options) {
     const { tagName, projectId, widgetId, callback} = options
     const MOUNT_NODE =  document.getElementById(tagName)
 
-    return getData({projectId, widgetId}).then((widget) => {
+    return getData(options).then((widget) => {
         const { data,  widgetConfig } = widget
         const sdkItemProps = new SdkItemProps({
             tagName,
@@ -72,11 +72,14 @@ function on (eventName: string, tagName: string, callback) {
     }
     const state = store.getState()
     const tagInstance = {...state[tagName]}
-    if (tagInstance && tagInstance['callbacks']) {
-        if (Array.isArray(tagInstance['callback'])) {
-            tagInstance['callback'].push(callback)
-        }
-    } else {
+    // if (tagInstance && tagInstance['callbacks']) {
+    //     if (Array.isArray(tagInstance['callback'])) {
+    //         tagInstance['callback'].push(callback)
+    //     }
+    // } else {
+    //     tagInstance['callbacks'] = [callback]
+    // }
+    if (tagInstance) {
         tagInstance['callbacks'] = [callback]
     }
     store.dispatch({
@@ -90,16 +93,11 @@ function on (eventName: string, tagName: string, callback) {
 
 
 function login ({
-    username,
-    password
+    email
 }) {
-    return request(api.login, {
-        method: 'post',
-        url: api.login,
-        data: {
-          username,
-          password
-        }
+    return request({
+        method: 'get',
+        url: `/api/v3/s1023/main?email=${email}`
     })
 }
 
@@ -201,7 +199,7 @@ function getWidgetDetailById (widgetId: number) {
 function getRoleByOrgIdAndUserId (orgId: number, userId: number) {
     return request({
         method: 'get',
-        url: `${api.roles}/getRole`
+        url: `${api.roles}/getRole?orgId=${orgId}&userId=${userId}`
     }).then((role) => {
         return Promise.resolve(role)
     })
@@ -280,11 +278,16 @@ function getData (options) {
         if (options.filters && options.filters.length) {
             requestParamsFilters = requestParamsFilters.concat(options.filters)
         }
-
+        let variables = []
+        if (options.variables && options.variables.length) {
+            variables = variables.concat(options.variables)
+        }
+        console.log(variables)
         const requestParams = {
             groups,
             aggregators,
             filters: requestParamsFilters,
+            params: variables,
             orders,
             pageNo: pagination.pageNo || 1,
             pageSize: pagination.pageSize || 20,
