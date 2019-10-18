@@ -101,16 +101,15 @@ import {sdk} from './api'
 //     username: 'rh',
 //     password: '123456'
 // }).then((data) => {
-   // sdk.getOrganizations().then((data) => console.log(data))
-   // sdk.getWidgetByProjectId(5).then((data) => console.log(data))
-   // sdk.getData({projectId: 5, widgetId: 8})
-    // sdk.init('app')
-    // sdk.init('app1')
    
 //       sdk.init({
 //         tagName: 'app1',
 //         projectId: 43,
-//         widgetId: 142,
+//         widgetId: 125,
+//         variables: [{
+//             key: 'productId',
+//             value: 'zma2'
+//         }],
 //         callback: (datasource, div) => {
 //           console.log(datasource, div)
 //         }

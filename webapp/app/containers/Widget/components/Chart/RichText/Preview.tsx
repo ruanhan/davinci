@@ -20,6 +20,7 @@
 
 import React from 'react'
 import { getFormattedValue } from '../../Config/Format'
+import { select } from 'redux-saga/effects'
 const Styles = require('./RichText.less')
 
 interface IRichTextPreviewProps {
@@ -72,11 +73,16 @@ export class RichTextPreview extends React.PureComponent<IRichTextPreviewProps> 
       return data[item]
     })
     const brushed = [{0: Object.values(resultData)}]
-    const sourceData = Object.values(resultData)
+    let sourceData = Object.values(resultData)
     const isInteractiveChart = onCheckTableInteract && onCheckTableInteract()
     if (isInteractiveChart && onDoInteract) {
       const triggerData = sourceData
       onDoInteract(triggerData)
+    }
+    console.log(selectedChart)
+    
+    if (selectedChart === 15) {
+      sourceData = params
     }
     setTimeout(() => {
       if (getDataDrillDetail) {
