@@ -8,7 +8,7 @@ import request, { removeToken } from 'utils/request'
 import {decodeMetricName} from '../../app/containers/Widget/components/util'
 import api from 'utils/api'
 
-const store = createStore({}, themeReducer)
+export const store = createStore({}, themeReducer)
 
 
 function init (options) {
@@ -16,12 +16,16 @@ function init (options) {
     const MOUNT_NODE =  document.getElementById(tagName)
 
     return getData(options).then((widget) => {
-        const { data,  widgetConfig } = widget
+        const { data,  widgetConfig, params, filters } = widget
         const sdkItemProps = new SdkItemProps({
             tagName,
             widgetProps: widgetConfig,
             renderType,
-            data
+            data,
+            params,
+            filters,
+            projectId,
+            widgetId
         })
         if (typeof callback === 'function') {
             callback(data, MOUNT_NODE)
@@ -32,7 +36,6 @@ function init (options) {
                 ...sdkItemProps
             }
         })
-        console.log(store.getState())
         const mapStateToProps = (state) => ({...state[tagName]})
         const ConnectSdkItem = connect(mapStateToProps)(SdkItem)
 
@@ -282,13 +285,16 @@ function getData (options) {
         if (options.variables && options.variables.length) {
             variables = variables.concat(options.variables)
         }
-        console.log(variables)
+        let resultOrder = []
+        if (options.orders) {
+            resultOrder = resultOrder.concat(options.orders)
+        }
         const requestParams = {
             groups,
             aggregators,
             filters: requestParamsFilters,
             params: variables,
-            orders,
+            orders: resultOrder,
             pageNo: pagination.pageNo || 1,
             pageSize: pagination.pageSize || 20,
             nativeQuery: false,
@@ -305,7 +311,9 @@ function getData (options) {
             const resultList = res.payload && res.payload.resultList ? res.payload.resultList : []
             return Promise.resolve({
                 data: resultList,
-                widgetConfig
+                widgetConfig,
+                params: variables,
+                filters: requestParamsFilters
             })
         })
     })
