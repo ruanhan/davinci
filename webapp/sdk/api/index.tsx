@@ -5,7 +5,7 @@ import SdkItem, { createStore, connect, ColorContext, themeReducer } from '../co
 import SdkItemProps from '../core/store/props'
 import {renderType} from '../core/component/widgetData'
 import request, { removeToken } from 'utils/request'
-import {decodeMetricName} from '../../app/containers/Widget/components/util'
+import {decodeMetricName, getTable} from '../../app/containers/Widget/components/util'
 import api from 'utils/api'
 
 export const store = createStore({}, themeReducer)
@@ -221,7 +221,7 @@ function getData (options) {
         } catch (err) {
             throw new Error(err)
         }
-        const { cols, rows, metrics, secondaryMetrics, filters, color, label, size, xAxis, tip, orders, cache, expired, pagination } = widgetConfig
+        const { cols, rows, metrics, secondaryMetrics, filters, color, label, size, xAxis, tip, orders, cache, expired } = widgetConfig
 
 
 
@@ -289,19 +289,49 @@ function getData (options) {
         if (options.orders) {
             resultOrder = resultOrder.concat(options.orders)
         }
-        const requestParams = {
-            groups,
-            aggregators,
-            filters: requestParamsFilters,
-            params: variables,
-            orders: resultOrder,
-            pageNo: pagination.pageNo || 1,
-            pageSize: pagination.pageSize || 20,
-            nativeQuery: false,
-            cache: false,
-            expired: 0,
-            flush: false
-        }
+
+        let pagination = widgetConfig.pagination
+        let noAggregators = false
+        const { mode, selectedChart, chartStyles } = widgetConfig
+        if (mode === 'chart'
+            && selectedChart === getTable().id
+            && chartStyles.table.withPaging) {
+          pagination = {
+            pageSize: Number(chartStyles.table.pageSize),
+            ...pagination,
+            pageNo: 1
+          }
+          noAggregators = chartStyles.table.withNoAggregators
+        }
+
+        const requestParams = {
+            groups,
+            aggregators,
+            filters: requestParamsFilters,
+            orders,
+            pageNo: pagination.pageNo,
+            pageSize: pagination.pageSize,
+            nativeQuery: noAggregators,
+            cache: false,
+            expired: 0,
+            flush: false
+        }
+
+
+
+        // const requestParams = {
+        //     groups,
+        //     aggregators,
+        //     filters: requestParamsFilters,
+        //     params: variables,
+        //     orders: resultOrder,
+        //     pageNo: pagination.pageNo || 1,
+        //     pageSize: pagination.pageSize || 20,
+        //     nativeQuery: false,
+        //     cache: false,
+        //     expired: 0,
+        //     flush: false
+        // }
 
         return request({
             method: 'post',
