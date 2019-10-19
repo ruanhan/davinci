@@ -87,7 +87,8 @@ export function getDimetionAxisOption (
       }
     },
     axisTick: {
-      show: showLabelX,
+      // show: showLabelX,
+      show: showLineX,
       lineStyle: {
         color: lineColorX
       }

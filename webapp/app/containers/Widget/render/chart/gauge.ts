@@ -126,7 +126,7 @@ export default function (chartProps: IChartProps, drillOptions?: any) {
       // animationDuration: 1000,
       // animationDurationUpdate: 1000,
       data: [{
-        value: data.length ? data[0][`${m.agg}(${decodedMetricName})`] : 0,
+        value: data.length ? Number(data[0][`${m.agg}(${decodedMetricName})`]) || 0 : 0,
         name: m.field.alias || decodedMetricName
       }],
       axisLine: {
