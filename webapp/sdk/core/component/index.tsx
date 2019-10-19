@@ -21,6 +21,8 @@
 import React from 'react'
 import Widget, { IWidgetConfig, IPaginationParams, RenderType } from 'app/containers/Widget/components/Widget'
 
+import {store, sdk} from '../../api/index'
+import { IWidget } from '../store/props'
 interface ISdkItemProps {
     data?: any
     instance?: any
@@ -50,7 +52,32 @@ class SdkItem extends React.Component<ISdkItemProps> {
            throw new Error(err)
        }
     }
+    private widgetRef: any
     public doInteract = (f) => f
+    private paginationChange = (pageNo: number, pageSize: number, orders) => {
+        const {tagName} = this.props
+        const state = store.getState()
+        const {projectId, widgetId, filters, params} = state[tagName]
+        console.log(orders, filters, params)
+        sdk.getData({
+            projectId,
+            widgetId,
+            orders,
+            filters,
+            variables: params
+        }).then((result) => {
+            const { data, widgetConfig } = result
+
+            store.dispatch({
+                type: 'ORDER',
+                payload: {
+                    data,
+                    tagName
+                }
+            })
+            console.log(store.getState())
+        })
+    }
 
     public render () {
         const {
@@ -66,6 +93,7 @@ class SdkItem extends React.Component<ISdkItemProps> {
                    renderType={renderType}
                    getDataDrillDetail={this.trigger}
                    onDoInteract={this.doInteract}
+                   onPaginationChange={this.paginationChange}
                 />
             </div>
         )

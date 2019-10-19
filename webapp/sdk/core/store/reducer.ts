@@ -28,8 +28,7 @@ interface IAction {
 }
 
 export const themeReducer = (state, action: IAction) => {
-    const {data, tagName, widgetProps, renderType, callbacks} = action.payload    // callbacks 用来注册事件监听
-    console.log(tagName)
+    const {data, tagName, widgetProps, renderType, callbacks, projectId, widgetId, filters, params} = action.payload    // callbacks 用来注册事件监听
     if (!state) {
         return {}
     }
@@ -42,9 +41,21 @@ export const themeReducer = (state, action: IAction) => {
                     data,
                     widgetProps,
                     renderType,
-                    tagName
+                    tagName,
+                    projectId,
+                    widgetId,
+                    filters,
+                    params
                 }
             }
+        case 'ORDER' :
+            return {
+                ...state,
+                [tagName]: {
+                    ...state[tagName],
+                    data
+                }
+            }    
         case 'RELOAD':
             return {
                 ...state,

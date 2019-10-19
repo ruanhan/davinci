@@ -23,27 +23,39 @@ import { render } from "react-dom"
 /**
  * 这个类作为 sdk 的init 方法 和 reload 方法的参数对象， 同时它也是 store 的基类， 每个sdkItem 都有一个 store实例，通过这个实例来管理 sdkItem的状态
  */
-interface IWidget {
+export interface IWidget {
    data: any
    widgetProps: any
    renderType: string
    tagName?: string
+   widgetId?: number
+   projectId?: number
+   params?: object[]
+   filters?: object[]
 }
 
 class SDdkItemProps {
     constructor (options: IWidget) {
         const {
-           data, widgetProps, renderType, tagName
+           data, widgetProps, renderType, tagName, widgetId, projectId, params, filters
         } = options
         this.data = data
         this.widgetProps = widgetProps
         this.renderType = renderType
         this.tagName = tagName
+        this.widgetId = widgetId
+        this.projectId = projectId
+        this.params = params
+        this.filters = filters
     }
     public tagName: string
     public data: any
     public widgetProps: any
     public renderType: string
+    public widgetId: number
+    public projectId: number
+    public params: object[]
+    public filters: object[]
 }
 
 export default SDdkItemProps

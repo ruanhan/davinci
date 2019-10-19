@@ -84,37 +84,36 @@ import {sdk} from './api'
 
 
 
-// sdk.on('click', 'app1', ({data, sourceData}) => {
-//     console.log('app1')
-//     console.log(data)
-//     console.log(sourceData)
-// })
+sdk.on('click', 'app1', ({data, sourceData}) => {
+    console.log('app1')
+    console.log(data)
+    console.log(sourceData)
+})
 
-// const div = document.createElement('div')
-// div.id = 'app1'
-// div.style.width = '300px'
-// div.style.height = '200px'
+const div = document.createElement('div')
+div.id = 'app1'
+div.style.width = '300px'
+div.style.height = '200px'
 
-// document.body.appendChild(div)
+document.body.appendChild(div)
 
-// sdk.login({
-//     username: 'rh',
-//     password: '123456'
-// }).then((data) => {
+sdk.login({
+    email: 'hanruan@creditease.cn'
+}).then((data) => {
    
-//       sdk.init({
-//         tagName: 'app1',
-//         projectId: 43,
-//         widgetId: 125,
-//         variables: [{
-//             key: 'productId',
-//             value: 'zma2'
-//         }],
-//         callback: (datasource, div) => {
-//           console.log(datasource, div)
-//         }
-//       })
-// })
+      sdk.init({
+        tagName: 'app1',
+        projectId: 43,
+        widgetId: 158,
+        variables: [{
+            key: 'productId',
+            value: 'zma2'
+        }],
+        callback: (datasource, div) => {
+          console.log(datasource, div)
+        }
+      })
+})
 
 
 // sdk.on('click', 'app1', ({data,  sourceData}) => {

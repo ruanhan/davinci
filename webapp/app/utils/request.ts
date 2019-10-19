@@ -47,7 +47,9 @@ export default function request (url: any, options?: AxiosRequestConfig): AxiosP
 export function setToken (token: string) {
   window.addEventListener('storage', syncToken, false)
   localStorage.setItem('TOKEN', token)
-  localStorage.setItem('TOKEN_EXPIRE', `${new Date().getTime() + 3600000}`)
+  // localStorage.setItem('TOKEN_EXPIRE', `${new Date().getTime() + 3600000}`)
+  localStorage.setItem('TOKEN_EXPIRE', `${3 * 24 * 60 * 60 * 1000}`)
+
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 }
 
