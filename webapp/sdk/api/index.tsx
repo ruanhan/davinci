@@ -304,34 +304,34 @@ function getData (options) {
           noAggregators = chartStyles.table.withNoAggregators
         }
 
-        const requestParams = {
-            groups,
-            aggregators,
-            filters: requestParamsFilters,
-            orders,
-            pageNo: pagination.pageNo,
-            pageSize: pagination.pageSize,
-            nativeQuery: noAggregators,
-            cache: false,
-            expired: 0,
-            flush: false
-        }
+//         const requestParams = {
+//             groups,
+//             aggregators,
+//             filters: requestParamsFilters,
+//             orders,
+//             pageNo: pagination.pageNo,
+//             pageSize: pagination.pageSize,
+//             nativeQuery: noAggregators,
+//             cache: false,
+//             expired: 0,
+//             flush: false
+//         }
 
 
 
-        // const requestParams = {
-        //     groups,
-        //     aggregators,
-        //     filters: requestParamsFilters,
-        //     params: variables,
-        //     orders: resultOrder,
-        //     pageNo: pagination.pageNo || 1,
-        //     pageSize: pagination.pageSize || 20,
-        //     nativeQuery: false,
-        //     cache: false,
-        //     expired: 0,
-        //     flush: false
-        // }
+        const requestParams = {
+            groups,
+            aggregators,
+            filters: requestParamsFilters,
+            params: variables,
+            orders: resultOrder,
+            pageNo: pagination.pageNo,
+            pageSize: pagination.pageSize,
+            nativeQuery: noAggregators,
+            cache: false,
+            expired: 0,
+            flush: false
+        }
 
         return request({
             method: 'post',
