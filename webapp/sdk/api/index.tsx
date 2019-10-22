@@ -285,7 +285,7 @@ function getData (options) {
         if (options.variables && options.variables.length) {
             variables = variables.concat(options.variables)
         }
-        let resultOrder = []
+        let resultOrder = [...orders]
         if (options.orders) {
             resultOrder = resultOrder.concat(options.orders)
         }

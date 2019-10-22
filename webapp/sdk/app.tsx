@@ -92,8 +92,17 @@ import {sdk} from './api'
 
 // const div = document.createElement('div')
 // div.id = 'app1'
-// div.style.width = '300px'
+// div.style.display = 'absoult';
+// div.style.position = 'absolute';
+// div.style.top = '0px'
+// div.style.bottom = '0px'
+// div.style.left = '0px'
+// div.style.right = '0px'
+// div.style.width = '100%'
 // div.style.height = '200px'
+// // div.style.background = '#caa9fa'
+// div.style.background = 'orange'
+
 
 // document.body.appendChild(div)
 
@@ -104,12 +113,13 @@ import {sdk} from './api'
 //       sdk.init({
 //         tagName: 'app1',
 //         projectId: 43,
-//         widgetId: 158,
+//         widgetId: 161,
 //         variables: [{
 //             key: 'productId',
 //             value: 'zma2'
 //         }],
 //         callback: (datasource, div) => {
+//           div.style.height = `${datasource.length * 30}px`
 //           console.log(datasource, div)
 //         }
 //       })
