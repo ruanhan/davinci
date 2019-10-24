@@ -122,6 +122,13 @@ export default function (chartProps: IChartProps, drillOptions?: any) {
         // borderRadius: 120,
         // lineHeight: 240,
         // backgroundColor: '#05354a'
+        rich: {},
+        width: 102,
+        height: 102,
+        borderRadius: 102,
+        lineHeight: 102,
+        backgroundColor: '#34398b'  
+
       },
       // animationDuration: 1000,
       // animationDurationUpdate: 1000,
@@ -167,7 +174,10 @@ export default function (chartProps: IChartProps, drillOptions?: any) {
         borderType: pointerBorderStyle,
         borderWidth: pointerBorderWidth,
         borderColor: pointerBorderColor
-      }
+      },
+      animationDuration: 1000,
+      animationDurationUpdate: 1000
+
     }
     seriesArr.push(seriesObj)
   })
