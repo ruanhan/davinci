@@ -202,6 +202,8 @@ export default function (chartProps: IChartProps, drillOptions) {
               color: color.items[0].config.values[k]
             }
           },
+          animationDuration: 1000,
+          animationDurationUpdate: 1000,
           ...labelOption
         }
         series.push(serieObj)
@@ -288,6 +290,8 @@ export default function (chartProps: IChartProps, drillOptions) {
         // color: color.value[m.name] || defaultThemeColors[i]
         // }
         // },
+        animationDuration: 1000,
+        animationDurationUpdate: 1000,
         ...labelOption
       }
       series.push(serieObj)
