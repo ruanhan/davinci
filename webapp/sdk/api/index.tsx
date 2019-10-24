@@ -75,13 +75,6 @@ function on (eventName: string, tagName: string, callback) {
     }
     const state = store.getState()
     const tagInstance = {...state[tagName]}
-    // if (tagInstance && tagInstance['callbacks']) {
-    //     if (Array.isArray(tagInstance['callback'])) {
-    //         tagInstance['callback'].push(callback)
-    //     }
-    // } else {
-    //     tagInstance['callbacks'] = [callback]
-    // }
     if (tagInstance) {
         tagInstance['callbacks'] = [callback]
     }
@@ -96,11 +89,16 @@ function on (eventName: string, tagName: string, callback) {
 
 
 function login ({
-    email
+    username,
+    password
 }) {
     return request({
-        method: 'get',
-        url: `/api/v3/s1023/main?email=${email}`
+        method: 'post',
+        data: {
+            username,
+            password
+        },
+        url: `/api/v3/login`
     })
 }
 
