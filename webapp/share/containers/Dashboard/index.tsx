@@ -281,7 +281,7 @@ export class Share extends React.Component<IDashboardProps, IDashboardStates> {
           this.setState({
             headlessBrowserRenderSign: true
           })
-        }, 5000)
+        }, 100)
       }
     }
     // if (dashboard && !this.props.dashboard) {
