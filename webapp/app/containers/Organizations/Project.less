@@ -218,6 +218,25 @@
     }
     .sideBox{
       margin-bottom: 16px;
+      .reportArea {
+        margin-bottom: 16px;
+        // height: 180px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center center;
+        border-radius: 2px;
+        box-shadow: @block-box-shadow;
+        transform: translate3d(0, 0, 0);
+        transition: transform 200ms linear,
+        box-shadow 200ms linear,
+        background-size 500ms linear;
+        &:hover {
+          background-size: 104%;
+          box-shadow: @block-active-box-shadow;
+          transform: translate3d(0, -5px, 0);
+          cursor: pointer;
+        }
+      }
     }
   }
   .searchListWrapper{
@@ -461,6 +480,9 @@
   .mime, .join{
     margin: 0 16px 16px 0;
   }
+  .reportArea {
+    height: 220px;
+  }
 }
 @media only screen and (max-width: 1600px) and (min-width: 1400px) {
   .wrap {
@@ -471,6 +493,9 @@
   }
   .mime, .join{
     margin: 0 16px 16px 0;
+  }
+  .reportArea {
+    height: 180px;
   }
 }
 @media only screen and (min-width: 1200px) and (max-width: 1400px) {
@@ -483,6 +508,9 @@
   .mime, .join{
     margin: 0 16px 16px 0;
   }
+  .reportArea {
+    height: 160px;
+  }
 }
 @media only screen and (max-width: 1199px) and (min-width: 991px) {
   .wrap {
@@ -493,6 +521,9 @@
   }
   .mime, .join{
     margin: 0 0 16px 0;
+  }
+  .reportArea {
+    height: 496px;
   }
 }
 @media only screen and (max-width: 990px) and (min-width: 768px) {
@@ -505,6 +536,9 @@
   .mime, .join{
     margin: 0 0 16px 0;
   }
+  .reportArea {
+    height: 360px;
+  }
 }
 
 @media only screen and (max-width: 767px) and (min-width: 300px) {
@@ -516,6 +550,9 @@
   }
   .mime, .join{
     margin: 0 0 16px 0;
+  }
+  .reportArea {
+    height: 200px;
   }
 }
 
@@ -676,3 +713,5 @@
     }
   }
 }
+
+

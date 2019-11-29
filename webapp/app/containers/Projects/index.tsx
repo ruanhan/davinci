@@ -396,6 +396,28 @@ export class Projects extends React.PureComponent<IProjectsProps, IProjectsState
     }
   }
 
+  public goReport() {
+    const url = 'https://www.oschina.net/project/top_cn_2019?from=timeline&isappinstalled=0'
+    window.open(url, '_blank')
+  }
+
+  public getReportImage() {
+    const now = new Date()
+    const today  ={
+      month: now.getMonth() + 1,
+      day: now.getDate()
+    }
+    if (today.month === 12 && today.day < 4) {
+      return require(`assets/images/report5.png`)
+    }
+
+    if (today.month === 12 && today.day < 7) {
+      return require(`assets/images/report3.png`)
+    }
+
+    return require(`assets/images/report.png`)
+  }
+
   public render () {
     const { formType, formVisible, modalLoading } = this.state
     const {onDeleteProject, organizations, projects, searchProject, loginUser, starUserList, collectProjects } = this.props
@@ -857,6 +879,7 @@ export class Projects extends React.PureComponent<IProjectsProps, IProjectsState
       [styles.mime]: true,
       [utilStyles.hide]: !(collectProjectsArr && collectProjectsArr.length > 0)
     })
+    const reportImage = require(`assets/images/report.png`)
     return (
       <div className={wrapper}>
         <div className={styles.search}>
@@ -982,6 +1005,10 @@ export class Projects extends React.PureComponent<IProjectsProps, IProjectsState
               key="history"
             >
               <div className={styles.sideBox}>
+                <div className={styles.reportArea}
+                  onClick={this.goReport}
+                  style={{backgroundImage: `url(${this.getReportImage()})`}}
+                />
                 <Box>
                   <Box.Header>
                     <Box.Title>
