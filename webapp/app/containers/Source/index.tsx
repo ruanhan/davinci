@@ -615,6 +615,7 @@ const mapDispatchToProps = (dispatch: Dispatch<SourceActionType>) => ({
     data: any,
     resolve: () => void,
     reject: (err: string) => void
+    // @ts-ignore
   ) => dispatch(checkNameUniqueAction(pathname, data, resolve, reject)),
   onLoadDatasourcesInfo: () => dispatch(SourceActions.loadDatasourcesInfo())
 })

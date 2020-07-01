@@ -1,0 +1,5 @@
+{
+  "outDir": "./server/api",
+  "originUrl": "http://10.143.131.33:8081/api-doc",
+  "templatePath": "./pont-template"
+}

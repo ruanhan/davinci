@@ -232,6 +232,7 @@ const viewReducer = (
           'name',
           'description'
         ]
+        // @ts-ignore
         const copiedView: IViewBase = pick(
           action.payload.result,
           copiedViewKeys

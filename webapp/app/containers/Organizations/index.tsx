@@ -177,6 +177,6 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps)
 
 export default compose(
   withConnect
-)(Organizations)
+)(Organizations) as React.ComponentType<any>
 
 

@@ -66,6 +66,7 @@ export class ColorPanel extends React.PureComponent<IColorPanelProps, IColorPane
     const { list, showAll } = this.props
     const { color, selectedTab } = this.state
 
+    // @ts-ignore
     const allTabClass = classnames({
       [styles.selected]: selectedTab === 'all',
       [utilStyles.hide]: !showAll
@@ -81,6 +82,7 @@ export class ColorPanel extends React.PureComponent<IColorPanelProps, IColorPane
       </li>
     )].concat(list.map((l) => (
       <li
+        // @ts-ignore
         className={classnames({ [styles.selected]: selectedTab === l.name })}
         key={l.name}
         onClick={this.tabSelect(l.name)}

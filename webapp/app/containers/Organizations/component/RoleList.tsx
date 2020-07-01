@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactType } from 'react'
 import FormType from 'antd/lib/form/Form'
 import { createStructuredSelector } from 'reselect'
 import RoleForm from './RoleForm'
@@ -33,12 +33,12 @@ interface IRoleProps {
   isLoginUserOwner: boolean
   onAddRole?: (name: string, desc: string, id: number, resolve: () => any) => any
   onEditRole?: (name: string, desc: string, id: number, resolve: () => any) => any
-  onDeleteRole: (id, resolve) => any
-  onRelRoleMember: (id: number, memberIds: number[], resolve: () => any) => any
-  onGetRelRoleMember: (id: number, resolve: (result: any) => any) => any
+  onDeleteRole?: (id, resolve) => any
+  onRelRoleMember?: (id: number, memberIds: number[], resolve: () => any) => any
+  onGetRelRoleMember?: (id: number, resolve: (result: any) => any) => any
   onLoadOrganizationRole?: (orgId: number) => any
   currentOrganization: IOrganization
-  currentOrganizationRole: IOrganizationRole[]
+  currentOrganizationRole?: IOrganizationRole[]
   organizationMembers: any[]
   organizations: any
   roleModalLoading?: boolean
@@ -389,6 +389,6 @@ export function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect<MappedStates, MappedDispatches, IRoleProps & FormComponentProps>(mapStateToProps, mapDispatchToProps)(RoleList)
+export default connect<MappedStates, MappedDispatches, IRoleProps & FormComponentProps>(mapStateToProps, mapDispatchToProps)(RoleList) as React.ComponentType<IRoleProps>
 
 

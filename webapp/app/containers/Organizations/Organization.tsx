@@ -125,6 +125,7 @@ export class Organization extends React.PureComponent <IOrganizationProps & Rout
           <Tabs>
             <TabPane tab={<span><Icon type="api" />项目<span className={styles.badge}>{this.getProjectsTotal()}</span></span>} key="projects">
               <ProjectList
+                // @ts-ignore
                 currentOrganization={currentOrganization}
                 organizationId={organizationId}
                 organizationProjectsDetail={currentOrganizationProjectsDetail}

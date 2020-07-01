@@ -116,6 +116,7 @@ export class DropboxItem extends React.PureComponent<IDropboxItemProps, IDropbox
       )
     }
 
+    // @ts-ignore
     const itemClass = classnames({
       [styles.dropItemContent]: true,
       [styles.category]: type === 'category',
@@ -123,6 +124,7 @@ export class DropboxItem extends React.PureComponent<IDropboxItemProps, IDropbox
       [styles.add]: type === 'add',
       [styles.dragging]: dragging
     })
+    // @ts-ignore
     const sortClass = classnames({
       'iconfont': true,
       [styles.sort]: true,

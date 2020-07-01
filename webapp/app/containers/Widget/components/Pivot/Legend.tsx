@@ -87,6 +87,7 @@ export class Legend extends React.PureComponent<ILegendProps, ILegendStates> {
     const { chartStyles } = this.props
     const { list } = this.state
     const { color: fontColor } = getStyleConfig(chartStyles).pivot
+    // @ts-ignore
     const legendClass = classnames({
       [styles.legend]: true,
       [styles.shown]: list.length
@@ -99,6 +100,7 @@ export class Legend extends React.PureComponent<ILegendProps, ILegendStates> {
           <li
             key={key}
             onClick={this.legendSelect(i.name, key)}
+            // @ts-ignore
             className={classnames({[styles.disabled]: !value.visible})}
             style={{
               color: fontColor

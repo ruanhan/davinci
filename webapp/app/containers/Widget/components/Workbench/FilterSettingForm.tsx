@@ -333,6 +333,7 @@ export class FilterSettingForm extends PureComponent<IFilterSettingFormProps, IF
       }
     } else {
       onSave({
+        // @ts-ignore
         sqlModel: this.getDateSql(),
         filterSource: {
           selectedDate,

@@ -84,7 +84,7 @@ import configureStore from './configureStore'
 
 
 const initialState = {}
-const store = configureStore(initialState, history)
+export const store = configureStore(initialState, history)
 const MOUNT_NODE = document.getElementById('app')
 
 const render = (messages) => {

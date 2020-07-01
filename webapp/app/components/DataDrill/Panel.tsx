@@ -35,6 +35,7 @@ const DataDrill: React.FC<IDataDrillProps> = (props: IDataDrillProps) => {
     currentData,
     drillHistory,
     widgetConfig,
+    // @ts-ignore
     drillpathSetting
   } = props
 
@@ -95,6 +96,7 @@ const DataDrill: React.FC<IDataDrillProps> = (props: IDataDrillProps) => {
   const drillOtherCategories = useMemo(() => {
     return drillHistoryGroups && drillHistoryGroups.length
       ? modelsfilterDrilledGroup
+          // @ts-ignore
           .filter((cate) => !drillHistory.some((his) => his.name === cate))
           .map((name) => ({
             name,

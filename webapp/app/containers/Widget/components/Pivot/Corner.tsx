@@ -43,7 +43,7 @@ export function Corner (props: ICornerProps) {
     marginTop += 1
     marginLeft += 1
   }
-
+  // @ts-ignore
   const cornerClass = classnames({
     [styles.corner]: true,
     [styles.raw]: !dimetionAxis && cols.length && rows.length

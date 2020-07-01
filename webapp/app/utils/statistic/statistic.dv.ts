@@ -1,5 +1,5 @@
 import UAParser from 'ua-parser-js'
-import moment, { Moment } from 'moment'
+import moment from 'moment'
 import request from 'utils/request'
 import api from 'utils/api'
 

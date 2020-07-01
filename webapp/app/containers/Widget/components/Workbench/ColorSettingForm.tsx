@@ -130,6 +130,7 @@ export class ColorSettingForm extends React.PureComponent<IColorSettingFormProps
       columnValueList = list.map((l) => (
         <li
           key={l.key}
+          // @ts-ignore
           className={classnames({[styles.selected]: selected.key === l.key})}
           onClick={this.listSelect(l)}
         >
@@ -139,6 +140,7 @@ export class ColorSettingForm extends React.PureComponent<IColorSettingFormProps
       ))
     }
 
+    // @ts-ignore
     const headerClass = classnames({
       [styles.header]: true,
       [utilStyles.hide]: mode !== 'pivot'

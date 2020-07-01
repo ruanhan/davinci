@@ -328,6 +328,7 @@ const ScheduleEditor: React.FC<ScheduleEditorProps> = (props) => {
                       wrappedComponentRef={(inst) => {
                         mailConfigForm = inst
                       }}
+                      // @ts-ignore
                       config={config}
                       loading={loading.schedule}
                       mailList={suggestMails}
@@ -340,6 +341,7 @@ const ScheduleEditor: React.FC<ScheduleEditorProps> = (props) => {
                       wrappedComponentRef={(inst) => {
                         weChatWorkConfigForm = inst
                       }}
+                      // @ts-ignore
                       config={config}
                     />
                   </Card>

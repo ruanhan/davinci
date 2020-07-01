@@ -17,7 +17,7 @@
  * limitations under the License.
  * >>
  */
-
+// @ts-nocheck
 import React, { Suspense } from 'react'
 import Helmet from 'react-helmet'
 import { connect } from 'react-redux'

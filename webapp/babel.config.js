@@ -1,12 +1,13 @@
 module.exports = {
   ignore: [
     /\/core-js/,
-    /webpack\/buildin/
+    /webpack\/buildin/,
+    /@babel[\/\\]runtime/
   ],
   overrides: [{
-    test: "./node_modules",
+    test: './node_modules',
   }],
-  sourceType: "unambiguous",
+  sourceType: 'unambiguous',
   presets: [
     [
       '@babel/preset-env',
@@ -18,8 +19,8 @@ module.exports = {
           proposals: true
         },
         targets: {
-          "chrome": 58,
-          "ie": 11
+          'chrome': 58,
+          'ie': 11
         }
       }
     ],
@@ -31,19 +32,19 @@ module.exports = {
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-proposal-optional-chaining',
-    ["import", {
-      "libraryName": "antd",
-      "libraryDirectory": "es",
-      "style": true
+    ['import', {
+      'libraryName': 'antd',
+      'libraryDirectory': 'es',
+      'style': true
     }],
-    ["transform-imports", {
-      "react-router": {
-        "transform": "react-router/${member}",
-        "preventFullImport": true
+    ['transform-imports', {
+      'react-router': {
+        'transform': 'react-router/${member}',
+        'preventFullImport': true
       },
-      "lodash": {
-        "transform": "lodash/${member}",
-        "preventFullImport": true
+      'lodash': {
+        'transform': 'lodash/${member}',
+        'preventFullImport': true
       }
     }]
   ],

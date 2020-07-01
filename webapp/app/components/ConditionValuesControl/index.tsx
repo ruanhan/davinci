@@ -302,7 +302,7 @@ export class ConditionValuesControl extends React.PureComponent<IConditionValues
           + 添加
         </Button>)
     }
-
+    // @ts-ignore
     const rowCls = classnames({
       [Styles.rowBlock]: true,
       [Styles.tagList]: true

@@ -347,6 +347,7 @@ const mapDispatchToProps = (dispatch: Dispatch<ViewActionType>) => ({
   onLoadViews: (projectId) => dispatch(ViewActions.loadViews(projectId)),
   onDeleteView: (viewId, resolve) => dispatch(ViewActions.deleteView(viewId, resolve)),
   onCopyView: (view, resolve) => dispatch(ViewActions.copyView(view, resolve)),
+    // @ts-ignore
   onCheckName: (data, resolve, reject) => dispatch(checkNameUniqueAction('view', data, resolve, reject))
 })
 

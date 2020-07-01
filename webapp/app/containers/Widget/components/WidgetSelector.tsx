@@ -152,6 +152,7 @@ export class WidgetSelector extends React.Component<IWidgetSelectorProps, IWidge
 
     const widgetsList = widgetsCurrent.map((w, idx) => {
       const widgetType = w.type
+    // @ts-ignore
       const widgetClassName = classnames({
         [styles.widget]: true,
         [styles.selector]: true,
@@ -177,6 +178,7 @@ export class WidgetSelector extends React.Component<IWidgetSelectorProps, IWidge
       )
     })
 
+    // @ts-ignore
     const wrapperCls = classnames({
       [className]: !!className
     })

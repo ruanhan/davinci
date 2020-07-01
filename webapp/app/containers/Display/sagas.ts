@@ -579,6 +579,7 @@ export function* undoOperation(action: DisplayActionType) {
   const { undoOperationDone, undoOperationFail } = DisplayActions
   try {
     switch (lastOperationType) {
+      // @ts-ignore
       case ActionTypes.EDIT_CURRENT_SLIDE_SUCCESS:
         yield call(request, `${api.display}/${displayId}/slides`, {
           method: 'put',
@@ -591,6 +592,7 @@ export function* undoOperation(action: DisplayActionType) {
         })
         break
       case ActionTypes.ADD_SLIDE_LAYERS_SUCCESS:
+      // @ts-ignore
       case ActionTypes.PASTE_SLIDE_LAYERS_SUCCESS:
         const deleteLayerIds = lastLayers.map((l) => l.id)
         yield call(
@@ -641,6 +643,7 @@ export function* redoOperation(action: DisplayActionType) {
   const { redoOperationDone, redoOperationFail } = DisplayActions
   try {
     switch (lastOperationType) {
+      // @ts-ignore
       case ActionTypes.EDIT_CURRENT_SLIDE_SUCCESS:
         yield call(request, `${api.display}/${displayId}/slides`, {
           method: 'put',
@@ -653,6 +656,7 @@ export function* redoOperation(action: DisplayActionType) {
         })
         break
       case ActionTypes.ADD_SLIDE_LAYERS_SUCCESS:
+      // @ts-ignore
       case ActionTypes.PASTE_SLIDE_LAYERS_SUCCESS:
         yield call(
           request,

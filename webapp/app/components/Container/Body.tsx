@@ -33,6 +33,7 @@ interface IContainerProps {
 export class Body extends React.Component<IContainerProps, {}> {
   public render () {
     const { grid, card, children, report} = this.props
+    // @ts-ignore
     const bodyClass = classnames({
       [styles.body]: true,
       [styles.grid]: grid,

@@ -193,10 +193,11 @@ export class LinkageConfig extends React.PureComponent<ILinkageConfigProps, ILin
 
     const PANEL_BODY_HEIGHT = 401
     const TOOLS_HEIGHT = 28
-
+    // @ts-ignore
     const chartContainerClass = classnames({
       [utilStyles.hide]: !localLinkages.length
     })
+    // @ts-ignore
     const emptyChartClass = classnames({
       [utilStyles.hide]: localLinkages.length
     })

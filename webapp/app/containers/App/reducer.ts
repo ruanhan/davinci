@@ -43,7 +43,7 @@ import {
 } from './constants'
 
 
-const initialState = {
+export const initialState = {
   externalAuthProviders: null,
   logged: null,
   loginUser: null,

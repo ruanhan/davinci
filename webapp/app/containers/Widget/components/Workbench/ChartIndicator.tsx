@@ -42,6 +42,7 @@ export function ChartIndicator (props: IChartIndicatorProps) {
     </>
   )
 
+  // @ts-ignore
   const iconClass = classnames({
     iconfont: true,
     [icon]: true,

@@ -8,9 +8,11 @@
     "preserveConstEnums": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "lib": ["dom","es5","es6","es7","es2017","es2019"],
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "allowJs": true,
     "typeRoots": ["node_modules/@types"],
     "baseUrl": ".",
     "paths": {

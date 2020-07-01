@@ -23,6 +23,7 @@ export const Avatar: React.FC<IAvatarProps> = ({
   const src = useMemo(() => path ? path : logo, [path])
 
   const itemClass =  useMemo(() => {
+    // @ts-ignore
     return classnames({
       [styles.img]: true,
       [styles.profile]: size === 'profile',
@@ -40,6 +41,7 @@ export const Avatar: React.FC<IAvatarProps> = ({
   }, [enlarge, showEnlarge])
 
   const wrapper = useMemo(() => {
+    // @ts-ignore
     return classnames({
       [styles.enlargeAvatarWrapper]: size === 'large',
       [styles.avatarWrapper]: size === 'profile'

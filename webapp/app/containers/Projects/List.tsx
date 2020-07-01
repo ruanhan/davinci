@@ -102,6 +102,7 @@ const Toolbar: React.FC<IToolbarProps> = React.memo(
     const menus = useMemo(() => {
       const types = ['all', 'join', 'create', 'favorite', 'history']
       return types.map((t: IProjectType) => {
+        // @ts-ignore
         const classNames = classnames({
           [styles.selectMenu]: pType === t,
           [styles.menuitem]: true
@@ -508,9 +509,10 @@ const Projects: React.FC<
               }
               stopPPG(e)
             }
-
+            // @ts-ignore
             const { Favorite, Transfer, Edit, Delete } = (function () {
-              const favoriteClassName = classnames({
+            // @ts-ignore
+            const favoriteClassName = classnames({
                 [styles.ft16]: true,
                 [styles.mainColor]: isFavorites
               })
@@ -702,6 +704,7 @@ export function mapDispatchToProps(dispatch) {
     onStarProject: (id, resolve) =>
       dispatch(ProjectActions.unStarProject(id, resolve)),
     onTransferProject: (id, orgId) =>
+    // @ts-ignore
       dispatch(ProjectActions.transferProject(id, orgId)),
     onDeleteProject: (id, resolve) =>
       dispatch(ProjectActions.deleteProject(id, resolve)),

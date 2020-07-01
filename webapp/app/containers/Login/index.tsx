@@ -177,4 +177,4 @@ const withConnect = connect<{}, {}, ILoginProps>(
   mapDispatchToProps
 )
 
-export default compose(withConnect)(Login)
+export default compose(withConnect)(Login) as React.ComponentType<any>

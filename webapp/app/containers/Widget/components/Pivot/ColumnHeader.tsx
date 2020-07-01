@@ -74,6 +74,7 @@ export class ColumnHeader extends React.Component<IColumnHeaderProps, {}> {
             x = spanSize(colKeys, j, i)
           }
 
+          // @ts-ignore
           const columnClass = classnames({
             [styles.leftBorder]: true,
             [styles.rightBorder]: true
@@ -120,6 +121,7 @@ export class ColumnHeader extends React.Component<IColumnHeaderProps, {}> {
       })
     }
 
+    // @ts-ignore
     const containerClass = classnames({
       [styles.columnHeader]: true,
       [styles.raw]: !dimetionAxis

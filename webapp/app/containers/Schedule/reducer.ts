@@ -115,7 +115,9 @@ const scheduleReducer = (state = initialState, action: ScheduleActionType) =>
         draft.portalDashboards[action.payload.portalId] = action.payload.dashboards
         break
       // @FIXME
+      // @ts-ignore
       case ActionTypes.LOAD_VIZS_SUCCESS:
+      // @ts-ignore
         draft.vizs = action.payload.result
         break
     }

@@ -82,12 +82,12 @@ export class RowHeader extends React.Component<IRowHeaderProps, {}> {
             }
             x = spanSize(rowKeys, i, j)
           }
-
+          // @ts-ignore
           const columnClass = classnames({
             [styles.topBorder]: true,
             [styles.bottomBorder]: true
           })
-
+          // @ts-ignore
           const contentClass = classnames({
             [styles.hasAuxiliaryLine]: hasAuxiliaryLine
           })
@@ -159,7 +159,7 @@ export class RowHeader extends React.Component<IRowHeaderProps, {}> {
         />
       )
     }
-
+    // @ts-ignore
     const containerClass = classnames({
       [styles.rowBody]: true,
       [styles.raw]: !dimetionAxis

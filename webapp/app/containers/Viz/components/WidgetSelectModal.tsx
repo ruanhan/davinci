@@ -111,6 +111,7 @@ const WidgetSelectModal: React.FC<IWidgetSelectModalProps> = (props) => {
               widgetsSelected={selectedWidgets}
               onWidgetsSelect={setSelectedWidgets}
             />,
+    // @ts-ignore
             <PollingConfig ref={refPollingConfig} />
           ][currentStep]
         }

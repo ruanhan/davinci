@@ -258,18 +258,22 @@ export class DashboardItemForm extends React.PureComponent<IDashboardItemFormPro
 
     const { getFieldDecorator } = form
 
+    // @ts-ignore
     const selectWidgetStep = classnames({
       [utilStyles.hide]: !!step
     })
 
+    // @ts-ignore
     const inputFormStep = classnames({
       [utilStyles.hide]: !step
     })
 
+    // @ts-ignore
     const frequencyClass = classnames({
       [utilStyles.hide]: !polling
     })
 
+    // @ts-ignore
     const isShowName = classnames({
       [utilStyles.hide]: !!(type === 'add')
     })

@@ -548,6 +548,7 @@ export class Table extends React.PureComponent<IChartProps, ITableStates> {
 
   private isValueModelType = (modelName) => {
     const target = this.getModelTypecollectByModel()
+    // @ts-ignore
     return hasProperty(target, modelName) === ViewModelTypes.Value
   }
 
@@ -641,6 +642,7 @@ export class Table extends React.PureComponent<IChartProps, ITableStates> {
       withPaging && tablePagination.total === -1 ? (
         <PaginationWithoutTotal
           dataLength={data.length}
+          // @ts-ignore
           size="small"
           {...paginationConfig}
         />

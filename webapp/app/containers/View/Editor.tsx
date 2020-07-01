@@ -468,6 +468,7 @@ export class ViewEditor extends React.Component<IViewEditorProps, IViewEditorSta
 }
 
 const mapDispatchToProps = (dispatch: Dispatch<ViewActionType | SourceActionType | OrganizationActionType>) => ({
+  // @ts-ignore
   onHideNavigator: () => dispatch(hideNavigator()),
   onLoadViewDetail: (viewId: number) => dispatch(ViewActions.loadViewsDetail([viewId], null, true)),
   onLoadSources: (projectId) => dispatch(SourceActions.loadSources(projectId)),

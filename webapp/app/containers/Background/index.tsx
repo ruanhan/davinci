@@ -28,7 +28,7 @@ import { makeSelectVersion } from 'containers/App/selectors'
 import JoinOrganization from 'containers/Register/JoinOrganization'
 import { clientVersion } from 'app/globalConfig'
 const styles = require('./Background.less')
-
+const imgsrc = require('assets/images/logo_light.svg')
 export const Background: FC = () => {
   const version = useSelector(makeSelectVersion())
   const davinciVersion = useMemo(() => {
@@ -55,7 +55,7 @@ export const Background: FC = () => {
       <Canvas />
       <img
         className={styles.logo}
-        src={require('assets/images/logo_light.svg')}
+        src={imgsrc}
       />
       <Switch>
         <Route path="/login" component={Login} />
