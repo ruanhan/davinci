@@ -18,17 +18,20 @@
   >>
   -->
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- The first thing in any HTML file should be the charset -->
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <!-- Make the page mobile compatible -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- Allow installing the app to the homescreen -->
-    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="format-detection" content="telephone=no" />
     <title>Davinci</title>
     <style>
@@ -39,7 +42,6 @@
         top: 0;
         left: 0;
       }
-
       .general-loading .dot-container {
         width: 90px;
         position: absolute;
@@ -59,7 +61,7 @@
       .general-loading .dot-container .dot:after {
         width: 26px;
         height: 26px;
-        background-color: #1B98E0;
+        background-color: #1b98e0;
         border-radius: 50%;
         position: absolute;
         top: 2px;
@@ -72,7 +74,7 @@
       }
 
       .general-loading .dot-container .dot:nth-child(2) {
-        transform: scale(.5, .5);
+        transform: scale(0.5, 0.5);
         animation: loading-2 1s linear infinite;
       }
 
@@ -82,46 +84,71 @@
       }
 
       @keyframes loading-1 {
-        0% { transform: scale(1, 1); }
-        50% { transform: scale(0, 0); }
-        100% { transform: scale(1, 1); }
+        0% {
+          transform: scale(1, 1);
+        }
+        50% {
+          transform: scale(0, 0);
+        }
+        100% {
+          transform: scale(1, 1);
+        }
       }
 
       @keyframes loading-2 {
-        0% { transform: scale(.5, .5); }
-        25% { transform: scale(1, 1); }
-        50% { transform: scale(.5, .5); }
-        75% { transform: scale(0, 0); }
-        100% { transform: scale(.5, .5); }
+        0% {
+          transform: scale(0.5, 0.5);
+        }
+        25% {
+          transform: scale(1, 1);
+        }
+        50% {
+          transform: scale(0.5, 0.5);
+        }
+        75% {
+          transform: scale(0, 0);
+        }
+        100% {
+          transform: scale(0.5, 0.5);
+        }
       }
 
       @keyframes loading-3 {
-        0% { transform: scale(0, 0); }
-        50% { transform: scale(1, 1); }
-        100% { transform: scale(0, 0); }
+        0% {
+          transform: scale(0, 0);
+        }
+        50% {
+          transform: scale(1, 1);
+        }
+        100% {
+          transform: scale(0, 0);
+        }
       }
     </style>
     <script type="x-shader/x-vertex" id="vertexshader">
-			attribute float scale;
-			void main() {
-				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
-				gl_PointSize = scale * ( 300.0 / - mvPosition.z );
-				gl_Position = projectionMatrix * mvPosition;
-			}
-		</script>
-		<script type="x-shader/x-fragment" id="fragmentshader">
-			uniform vec3 color;
-			void main() {
-				if ( length( gl_PointCoord - vec2( 0.5, 0.5 ) ) > 0.475 ) discard;
-				gl_FragColor = vec4( color, 1.0 );
-			}
-		</script>
+      attribute float scale;
+      void main() {
+      	vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+      	gl_PointSize = scale * ( 300.0 / - mvPosition.z );
+      	gl_Position = projectionMatrix * mvPosition;
+      }
+    </script>
+    <script type="x-shader/x-fragment" id="fragmentshader">
+      uniform vec3 color;
+      void main() {
+      	if ( length( gl_PointCoord - vec2( 0.5, 0.5 ) ) > 0.475 ) discard;
+      	gl_FragColor = vec4( color, 1.0 );
+      }
+    </script>
   </head>
   <body>
     <!-- Display a message if JS has been disabled on the browser. -->
-    <noscript>如果你看到这条信息，说明<strong> 你的浏览器禁用了 JavaScript </strong>, 请 <strong>取消禁用</strong> 恢复应用程序正常工作。</noscript>
+    <noscript
+      >如果你看到这条信息，说明<strong> 你的浏览器禁用了 JavaScript </strong>,
+      请 <strong>取消禁用</strong> 恢复应用程序正常工作。</noscript
+    >
     <!-- Prevent refresh page after keypress `Enter` to input when it is the only one input in document -->
-    <input type="text" style="display: none" />
+    <input type="text" style="display: none;" />
     <!-- The app hooks into this div -->
     <div id="app">
       <div class="general-loading">
